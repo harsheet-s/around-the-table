@@ -1,0 +1,2 @@
+class RoundNotReadyException(Exception):
+    pass
