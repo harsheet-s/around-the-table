@@ -1,0 +1,4 @@
+# Development dependencies — needed to run the test suite.
+# The model layer has no UI dependency, so the tests do not need Pillow
+# or a display. CI installs this file only.
+pytest==9.2.0
