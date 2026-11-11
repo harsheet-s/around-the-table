@@ -7,8 +7,8 @@ on:
     branches: [main]
 
 jobs:
-  test:
-    name: Run model tests
+  check:
+    name: Check model package
     runs-on: ubuntu-latest
 
     steps:
@@ -18,13 +18,18 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.12"
+          python-version: "3.14"
           cache: pip
 
-      - name: Install dependencies
+      - name: Install test dependencies
+        # The model layer has no UI dependency, so the runtime requirements
+        # (Pillow, for the Tkinter views) are deliberately not installed here.
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          pip install -r requirements-dev.txt
 
-      - name: Run tests
-        run: pytest tests/ -v
+      - name: Check the model package imports cleanly
+        # No test suite in the repository yet; that arrives in a later branch.
+        # Until then CI verifies the package is importable without a display.
+        run: |
+          python -c "import model.card, model.card_library, model.deck, model.dealer, model.player, model.login_model, model.weapon_style; print('model package imports OK')"
