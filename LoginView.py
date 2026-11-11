@@ -6,11 +6,6 @@ from DealerView import DealerView
 from model.login_model import LoginModel
 from PlayerView import PlayerView
 
-#Note that this class is not done!
-#This will only add 2 players to the game.
-
-#This structure is following the method shown in the study modules
-#You are welcome to change this however you want
 class LoginView:
 
     def __init__(self, root, model):

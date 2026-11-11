@@ -55,19 +55,17 @@ class DealerView:
                      text=f"Player {i + 1}: N/A"
                  )
     def updatebuttonstates(self):
-        pass
-        #mainok = self.dealer.get_main_deck().has_enough(len(self.dealer.get_players()))
-        #secondaryok = self.dealer.get_secondary_deck().has_enough(1)
-        #if mainok and secondaryok:
-            #self.dealbtn.config(state="normal", background=ut.red)
-        #else:
-            #self.dealbtn.config(state="disabled", background="#ffd0d0")
-        
-        
-        ##if self.dealer.every_player_selected():
-            ##self.playbtn.config(state="normal", background=ut.red)
-        ##else:
-            ##self.playbtn.config(state="disabled", background="#ffd0d0")
+        main_ok = self.dealer.get_main_deck().has_enough(len(self.dealer.get_players()))
+        secondary_ok = self.dealer.get_secondary_deck().has_enough(1)
+        if main_ok and secondary_ok:
+            self.dealbtn.config(state="normal", background=ut.red)
+        else:
+            self.dealbtn.config(state="disabled", background="#ffd0d0")
+
+        if self.dealer.every_player_selected():
+            self.playbtn.config(state="normal", background=ut.red)
+        else:
+            self.playbtn.config(state="disabled", background="#ffd0d0")
     
     
     def openmaindeck(self):
